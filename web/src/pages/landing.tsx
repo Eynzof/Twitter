@@ -10,10 +10,15 @@ function Landing() {
       <div id="image-section">
         <div></div>
       </div>
-      <section id="content-section">
+      <section id="content-section" style={{ display: "flex", height: "100%" }}>
         <section
           id="content-section-wrapper"
-          style={{ display: "flex", flexDirection: "column" }}>
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            height: "100%",
+            justifyContent: "space-evenly",
+          }}>
           <nav>
             <img src={twitterlogo} alt="twitter.com" />
           </nav>
@@ -21,7 +26,9 @@ function Landing() {
             <h1>Happening now</h1>
           </div>
           <h2 id="heading2">Join Twitter today.</h2>
-          <section id="login-section" style={{ width: "60%" }}>
+          <section
+            id="login-section"
+            style={{ width: "60%", display: "flex", flexDirection: "column" }}>
             <a
               className="signup-button"
               href="/login-g"
@@ -61,10 +68,16 @@ function Landing() {
               />
               Sign up with Apple
             </a>
-            <div className="or">
-              <hr className="hr1" />
+            <div className="or" style={{ position: "relative" }}>
+              <hr
+                className="hr1"
+                style={{ width: "110px", position: "absolute", top: "10px" }}
+              />
               <h6> or </h6>
-              <hr className="hr2" />
+              <hr
+                className="hr2"
+                style={{ width: "110px", position: "absolute", top: "30px" }}
+              />
             </div>
             <a href="/signup">
               <button className="button1">Sign up with phone or email</button>
