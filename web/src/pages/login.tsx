@@ -7,6 +7,8 @@ import * as Yup from "yup";
 
 import { useNavigate } from "react-router-dom";
 
+import TwitterLogo from "../styles/assets/TwitterLogo.png";
+
 const LOGIN_MUTATION = gql`
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
@@ -39,7 +41,13 @@ function Login() {
 
   return (
     <div>
-      <h1>Login</h1>
+      <img
+        src={TwitterLogo}
+        alt="logo"
+        style={{ width: "50px" }}
+        className={"logo"}
+      />
+      <h3>Login</h3>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
