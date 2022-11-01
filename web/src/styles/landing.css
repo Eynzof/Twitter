@@ -1,0 +1,12 @@
+main {
+  display: flex;
+}
+#image-section {
+  width: 55%;
+}
+#content-section {
+  width: 45%;
+}
+#content-section-wrapper {
+  margin: 30px;
+}
