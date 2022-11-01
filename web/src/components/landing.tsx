@@ -5,7 +5,7 @@ import "../styles/landing.css";
 
 function Landing() {
   return (
-    <main>
+    <main style={{ backgroundColor: "#C5C5C5" }}>
       <div id="image-section" style={{ backgroundColor: "#808080" }}>
         <div></div>
         <svg></svg>
