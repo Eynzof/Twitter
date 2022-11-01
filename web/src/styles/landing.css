@@ -3,7 +3,7 @@ main {
 }
 #image-section {
   width: 55%;
-  background: url("../styles/assets/twitter.png") no-repeat center center;
+  background: url("../styles/assets/twitter.jpg") no-repeat center center;
   background-size: cover;
 }
 #content-section {
