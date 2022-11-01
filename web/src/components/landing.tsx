@@ -28,7 +28,7 @@ function Landing() {
               Sign up with Google
             </a>
             <a className="signup-a" href="/login-a">
-              <img src={ applelogo } alt="apple logo" />
+              <img src={applelogo} alt="apple logo" />
               Sign up with Apple
             </a>
             <div className="or">
@@ -36,12 +36,15 @@ function Landing() {
               <h6> or </h6>
               <hr className="hr2" />
             </div>
-            <button className="button1">Sign up with phone or email</button>
+            <a href="/signup">
+              <button className="button1">Sign up with phone or email</button>
+            </a>
+
             <p>
               By signing up, you agree to the
-              <a href=""> Terms of Service</a> and
-              <a href="">Privacy Policy </a>, including
-              <a href="">Cookie Use.</a>
+              <a href="/terms-of-service"> Terms of Service</a> and
+              <a href="/privacy-policy"> Privacy Policy </a>, including
+              <a href="/cookie-use"> Cookie Use.</a>
             </p>
             <h4>Already have an account?</h4>
             <button className="button2">Sign in</button>
