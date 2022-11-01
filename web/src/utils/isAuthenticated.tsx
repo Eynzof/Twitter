@@ -1,6 +1,5 @@
 import { gql, useQuery } from "@apollo/client";
-import { ReactNode } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 
 const IS_LOGGED_IN = gql`
   {
@@ -10,19 +9,12 @@ const IS_LOGGED_IN = gql`
   }
 `;
 
-interface Props {
-  children?: ReactNode;
-  // any props that come into the component
-}
-
-export default function IsAythenticated({ children }: Props) {
+export default function IsAuthenticated() {
   const { loading, error, data } = useQuery(IS_LOGGED_IN);
   if (loading) {
     return <p>Loading...</p>;
   }
   if (error) return <p>{error.message}</p>;
-  if (!data.me) {
-    return <Navigate to={{ pathname: "/landing" }} />;
-  }
-  return children;
+  console.log("data.me", data.me);
+  return data.me ? <Outlet /> : <Navigate to="/login" />;
 }
