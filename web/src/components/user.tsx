@@ -11,6 +11,10 @@ const USERS_QUERY = gql`
   }
 `;
 
+interface User {
+  name: string;
+}
+
 export default function Users() {
   const { loading, error, data } = useQuery(USERS_QUERY);
   if (loading) {
@@ -19,7 +23,7 @@ export default function Users() {
   if (error) return <p>{error.message}</p>;
   return (
     <div>
-      {data.users.map((user) => (
+      {data.users.map((user: User) => (
         <p>{user.name}</p>
       ))}
     </div>
