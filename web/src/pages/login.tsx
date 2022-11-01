@@ -6,7 +6,7 @@ import * as Yup from "yup";
 
 import { Link, useNavigate } from "react-router-dom";
 
-import TwitterLogo from "../styles/assets/TwitterLogo.png";
+import TwitterLogo from "../styles/assets/twitterlogo.png";
 import "../styles/login.css";
 
 const LOGIN_MUTATION = gql`

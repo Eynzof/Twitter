@@ -6,7 +6,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 
 import { useNavigate, Link } from "react-router-dom";
-import TwitterLogo from "../styles/assets/TwitterLogo.png";
+import TwitterLogo from "../styles/assets/twitterlogo.png";
 
 const SIGNUP_MUTATION = gql`
   mutation signup($name: String, $email: String!, $password: String!) {

@@ -12,3 +12,7 @@ main {
 #content-section-wrapper {
   margin: 30px;
 }
+nav img {
+  height: 60px;
+  padding-top: 20px;
+}
