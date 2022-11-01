@@ -1,6 +1,4 @@
-import React from "react";
 import { gql, useQuery } from "@apollo/client";
-interface userProps {}
 
 const USERS_QUERY = gql`
   query USERS_QUERY {
@@ -24,7 +22,7 @@ export default function Users() {
   return (
     <div>
       {data.users.map((user: User) => (
-        <p>{user.name}</p>
+        <p key={user.name}>{user.name}</p>
       ))}
     </div>
   );
