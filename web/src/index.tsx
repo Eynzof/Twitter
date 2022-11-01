@@ -2,6 +2,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Landing from "./components/landing";
 import Users from "./components/user";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
@@ -21,8 +22,8 @@ const router = createBrowserRouter([
     element: <Users />,
   },
   {
-    path: "about",
-    element: <div>About</div>,
+    path: "landing",
+    element: <Landing />,
   },
 ]);
 
