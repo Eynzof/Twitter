@@ -3,6 +3,7 @@ main {
 }
 #image-section {
   width: 55%;
+  background: url("../styles/assets/twitter.png");
 }
 #content-section {
   width: 45%;
