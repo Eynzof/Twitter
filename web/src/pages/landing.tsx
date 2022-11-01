@@ -11,7 +11,9 @@ function Landing() {
         <div></div>
       </div>
       <section id="content-section">
-        <section id="content-section-wrapper">
+        <section
+          id="content-section-wrapper"
+          style={{ display: "flex", flexDirection: "column" }}>
           <nav>
             <img src={twitterlogo} alt="twitter.com" />
           </nav>
@@ -19,16 +21,44 @@ function Landing() {
             <h1>Happening now</h1>
           </div>
           <h2 id="heading2">Join Twitter today.</h2>
-          <section id="login-section">
-            <a className="signup-g" href="/login-g">
+          <section id="login-section" style={{ width: "60%" }}>
+            <a
+              className="signup-button"
+              href="/login-g"
+              style={{
+                display: "flex",
+                border: "0.5px solid rgb(212, 211, 211)",
+                borderRadius: "20px",
+                marginBottom: "8px",
+
+                padding: "8px",
+                justifyContent: "center",
+              }}>
               <img
+                style={{ width: "18px", marginRight: "10px" }}
                 src="https://img.icons8.com/color/48/000000/google-logo.png"
                 alt="google logo"
               />
               Sign up with Google
             </a>
-            <a className="signup-a" href="/login-a">
-              <img src={applelogo} alt="apple logo" />
+            <a
+              className="signup-button"
+              href="/login-a"
+              style={{
+                display: "flex",
+                border: "0.5px solid rgb(212, 211, 211)",
+                borderRadius: "20px",
+                padding: "8px",
+                justifyContent: "center",
+              }}>
+              <img
+                style={{
+                  width: "18px",
+                  marginRight: "10px",
+                }}
+                src={applelogo}
+                alt="apple logo"
+              />
               Sign up with Apple
             </a>
             <div className="or">
