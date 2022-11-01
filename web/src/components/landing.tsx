@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import TwitterLogo from "../styles/assets/TwitterLogo.png";
 import "../styles/landing.css";
-
+import "../styles/utility.css";
 function Landing() {
   return (
     <main style={{ backgroundColor: "#C5C5C5" }}>
