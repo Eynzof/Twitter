@@ -6,11 +6,11 @@ import "../styles/landing.css";
 function Landing() {
   return (
     <main>
-      <div id="image-section">
+      <div id="image-section" style={{ backgroundColor: "#808080" }}>
         <div></div>
         <svg></svg>
       </div>
-      <section id="content-section">
+      <section id="content-section" style={{ backgroundColor: "#d9d9d9" }}>
         <svg></svg>
         <h1>Happening now</h1>
         <h3>Join Twitter today.</h3>
