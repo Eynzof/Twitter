@@ -1,0 +1,10 @@
+mutation signup {
+  signup(name: "enzo", email: "enzo@enzo.com", password: "1234") {
+    token
+    user {
+      id
+      name
+      email
+    }
+  }
+}
