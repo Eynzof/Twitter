@@ -49,7 +49,7 @@ export default function Signup() {
   });
 
   return (
-    <div>
+    <div className="container">
       <h1>Signup</h1>
       <Formik
         initialValues={initialValues}
@@ -80,7 +80,7 @@ export default function Signup() {
             placeholder="confirmPassword"
           />
           <ErrorMessage name="confirmPassword" component={"div"} />
-          <button type="submit">Signup</button>
+          <button type="submit" className="register">Signup</button>
         </Form>
       </Formik>
     </div>

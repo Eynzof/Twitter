@@ -4,6 +4,7 @@ import Users from "./components/user";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
 import IsAuthenticated from "./utils/isAuthenticated";
+import './app.css'
 
 function App() {
   return (
