@@ -2,18 +2,14 @@ import {
   ApolloClient,
   ApolloProvider,
   HttpLink,
-  InMemoryCache,
+  InMemoryCache
 } from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Landing from "./components/landing";
-import Users from "./components/user";
+import App from "./app";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import { setContext } from "@apollo/client/link/context";
-import Signup from "./pages/signup";
-import Login from "./pages/login";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -37,29 +33,10 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Users />,
-  },
-  {
-    path: "landing",
-    element: <Landing />,
-  },
-  {
-    path: "signup",
-    element: <Signup />,
-  },
-  {
-    path: "login",
-    element: <Login />,
-  },
-]);
-
 root.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <RouterProvider router={router} />
+      <App />
     </ApolloProvider>
   </React.StrictMode>
 );
