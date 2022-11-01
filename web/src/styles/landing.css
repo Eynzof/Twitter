@@ -16,3 +16,12 @@ nav img {
   height: 60px;
   padding-top: 20px;
 }
+#heading1 {
+  font-size: 58px;
+  flex-wrap: wrap;
+  font-family: "Work Sans", sans-serif;
+}
+#heading2 {
+  font-size: 35px;
+  font-family: "Work Sans", sans-serif;
+}

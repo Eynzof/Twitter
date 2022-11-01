@@ -14,8 +14,10 @@ function Landing() {
           <nav>
             <img src={twitterlogo} alt="twitter.com" />
           </nav>
-          <h3>Happening now</h3>
-          <h3>Join Twitter today.</h3>
+          <div id="heading1">
+            <h1>Happening now</h1>
+          </div>
+          <h2 id="heading2">Join Twitter today.</h2>
           <section></section>
         </section>
       </section>
