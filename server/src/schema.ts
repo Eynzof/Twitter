@@ -53,35 +53,37 @@ const Query = objectType({
       },
     })
 
-    t.nonNull.list.nonNull.field('feed', {
-      type: 'Post',
-      args: {
-        searchString: stringArg(),
-        skip: intArg(),
-        take: intArg(),
-        orderBy: arg({
-          type: 'PostOrderByUpdatedAtInput',
-        }),
-      },
+    t.nonNull.list.nonNull.field('users', {
+      type: 'User',
+      // args: {
+      //   searchString: stringArg(),
+      //   skip: intArg(),
+      //   take: intArg(),
+      //   orderBy: arg({
+      //     type: 'PostOrderByUpdatedAtInput',
+      //   }),
+      // },
       resolve: (_parent, args, context: Context) => {
-        const or = args.searchString
-          ? {
-              OR: [
-                { title: { contains: args.searchString } },
-                { content: { contains: args.searchString } },
-              ],
-            }
-          : {}
+        return context.prisma.user.findMany()
 
-        return context.prisma.post.findMany({
-          where: {
-            published: true,
-            ...or,
-          },
-          take: args.take || undefined,
-          skip: args.skip || undefined,
-          orderBy: args.orderBy || undefined,
-        })
+        // const or = args.searchString
+        //   ? {
+        //       OR: [
+        //         { title: { contains: args.searchString } },
+        //         { content: { contains: args.searchString } },
+        //       ],
+        //     }
+        //   : {}
+
+        // return context.prisma.post.findMany({
+        //   where: {
+        //     published: true,
+        //     ...or,
+        //   },
+        //   take: args.take || undefined,
+        //   skip: args.skip || undefined,
+        //   orderBy: args.orderBy || undefined,
+        // })
       },
     })
 
