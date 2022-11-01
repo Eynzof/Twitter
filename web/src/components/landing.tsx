@@ -5,11 +5,11 @@ import "../styles/landing.css";
 import "../styles/utility.css";
 function Landing() {
   return (
-    <main style={{ backgroundColor: "#C5C5C5" }}>
+    <main>
       <div id="image-section">
         <div></div>
       </div>
-      <section id="content-section" style={{ backgroundColor: "#d9d9d9" }}>
+      <section id="content-section">
         <section id="content-section-wrapper">
           <nav>
             <img src={twitterlogo} alt="twitter.com" />
