@@ -5,7 +5,8 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 
 import * as Yup from "yup";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import TwitterLogo from "../styles/assets/TwitterLogo.png";
 
 const SIGNUP_MUTATION = gql`
   mutation signup($name: String, $email: String!, $password: String!) {
@@ -50,7 +51,13 @@ export default function Signup() {
 
   return (
     <div className="container">
-      <h1>Signup</h1>
+      <img
+        src={TwitterLogo}
+        alt="logo"
+        style={{ width: "50px" }}
+        className={"logo"}
+      />
+      <h3>Signup</h3>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -80,9 +87,15 @@ export default function Signup() {
             placeholder="confirmPassword"
           />
           <ErrorMessage name="confirmPassword" component={"div"} />
-          <button type="submit" className="register">Signup</button>
+          <button type="submit" className="login-button">
+            <span>Signup</span>
+          </button>
         </Form>
       </Formik>
+      <div className="register">
+        <h4>Already have an account?</h4>
+        <Link to="/login">Login</Link>
+      </div>
     </div>
   );
 }
