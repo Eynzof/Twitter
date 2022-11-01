@@ -3,7 +3,7 @@ import "./App.css";
 import Users from "./components/user";
 
 const client = new ApolloClient({
-  uri: "https://flyby-gateway.herokuapp.com/",
+  uri: "http://localhost:4000",
   cache: new InMemoryCache(),
 });
 
