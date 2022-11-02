@@ -20,7 +20,11 @@ function Landing() {
             justifyContent: "space-evenly",
           }}>
           <nav>
-            <img src={twitterlogo} alt="twitter.com" />
+            <img
+              src={twitterlogo}
+              alt="twitter.com"
+              style={{ height: "40px", padding: "top: 20px" }}
+            />
           </nav>
           <div id="heading1">
             <h1>Happening now</h1>
@@ -40,6 +44,7 @@ function Landing() {
 
                 padding: "8px",
                 justifyContent: "center",
+                color: "black",
               }}>
               <img
                 style={{ width: "18px", marginRight: "10px" }}
@@ -57,6 +62,7 @@ function Landing() {
                 borderRadius: "20px",
                 padding: "8px",
                 justifyContent: "center",
+                color: "black",
               }}>
               <img
                 style={{

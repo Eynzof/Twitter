@@ -12,10 +12,6 @@ main {
 #content-section-wrapper {
   margin: 30px;
 }
-nav img {
-  height: 60px;
-  padding-top: 20px;
-}
 #heading1 {
   font-size: 58px;
   flex-wrap: wrap;
