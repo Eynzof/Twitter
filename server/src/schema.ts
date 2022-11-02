@@ -172,17 +172,39 @@ const Mutation = objectType({
         bio: stringArg(),
         location: stringArg(),
         website: stringArg(),
-        avatar: stringArg()
+        avatar: stringArg(),
       },
       resolve: (_, args, context: Context) => {
         const userId = getUserId(context)
-        if
+        if (!userId) throw new Error('Cound not authenticate user.')
 
-        return context.prisma.post.create({
+        return context.prisma.profile.create({
           data: {
-            title: args.data.title,
-            content: args.data.content,
-            authorId: userId,
+            ...args,
+            User: { connect: { id: Number(userId) } },
+          },
+        })
+      },
+    })
+    t.field('updateProfile', {
+      type: 'Profile',
+      args: {
+        id: intArg(),
+        bio: stringArg(),
+        location: stringArg(),
+        website: stringArg(),
+        avatar: stringArg(),
+      },
+      resolve: (_, { id, ...args }, context: Context) => {
+        const userId = getUserId(context)
+        if (!userId) throw new Error('Cound not authenticate user.')
+
+        return context.prisma.profile.update({
+          data: {
+            ...args,
+          },
+          where: {
+            id: Number(id),
           },
         })
       },
