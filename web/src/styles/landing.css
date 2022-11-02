@@ -22,3 +22,48 @@ main {
   font-size: 35px;
   font-family: "Work Sans", sans-serif;
 }
+
+footer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 20px 0px;
+}
+
+#footer ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+#footer ul a {
+  color: rgb(83, 100, 113);
+  text-decoration: none;
+  list-style: none;
+  padding-right: 19px;
+  padding-top: 8px;
+  font-size: 14px;
+  font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+}
+#footer ul a:hover {
+  color: rgb(83, 100, 113);
+  text-decoration: underline;
+  list-style: none;
+  padding-right: 19px;
+  padding-top: 8px;
+  font-size: 14px;
+  font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+}
+#footer ul li {
+  color: rgb(64, 68, 71);
+  text-decoration: none;
+  list-style: none;
+}
+#footer span {
+  color: rgb(64, 68, 71);
+  text-decoration: none;
+  list-style: none;
+  padding: 7px;
+  color: #1d1d1d;
+}
