@@ -41,17 +41,17 @@ const Query = objectType({
       },
     })
 
-    t.nullable.field('postById', {
-      type: 'Post',
-      args: {
-        id: intArg(),
-      },
-      resolve: (_parent, args, context: Context) => {
-        return context.prisma.post.findUnique({
-          where: { id: args.id || undefined },
-        })
-      },
-    })
+    // t.nullable.field('postById', {
+    //   type: 'Post',
+    //   args: {
+    //     id: intArg(),
+    //   },
+    //   resolve: (_parent, args, context: Context) => {
+    //     return context.prisma.post.findUnique({
+    //       where: { id: args.id || undefined },
+    //     })
+    //   },
+    // })
 
     t.nonNull.list.nonNull.field('users', {
       type: 'User',
@@ -87,30 +87,30 @@ const Query = objectType({
       },
     })
 
-    t.list.field('draftsByUser', {
-      type: 'Post',
-      args: {
-        userUniqueInput: nonNull(
-          arg({
-            type: 'UserUniqueInput',
-          }),
-        ),
-      },
-      resolve: (_parent, args, context: Context) => {
-        return context.prisma.user
-          .findUnique({
-            where: {
-              id: args.userUniqueInput.id || undefined,
-              email: args.userUniqueInput.email || undefined,
-            },
-          })
-          .posts({
-            where: {
-              published: false,
-            },
-          })
-      },
-    })
+    // t.list.field('draftsByUser', {
+    //   type: 'Post',
+    //   args: {
+    //     userUniqueInput: nonNull(
+    //       arg({
+    //         type: 'UserUniqueInput',
+    //       }),
+    //     ),
+    //   },
+    //   resolve: (_parent, args, context: Context) => {
+    //     return context.prisma.user
+    //       .findUnique({
+    //         where: {
+    //           id: args.userUniqueInput.id || undefined,
+    //           email: args.userUniqueInput.email || undefined,
+    //         },
+    //       })
+    //       .posts({
+    //         where: {
+    //           published: false,
+    //         },
+    //       })
+    //   },
+    // })
   },
 })
 
@@ -166,17 +166,18 @@ const Mutation = objectType({
       },
     })
 
-    t.field('createDraft', {
-      type: 'Post',
+    t.field('createProfile', {
+      type: 'Profile',
       args: {
-        data: nonNull(
-          arg({
-            type: 'PostCreateInput',
-          }),
-        ),
+        bio: stringArg(),
+        location: stringArg(),
+        website: stringArg(),
+        avatar: stringArg()
       },
       resolve: (_, args, context: Context) => {
         const userId = getUserId(context)
+        if
+
         return context.prisma.post.create({
           data: {
             title: args.data.title,
@@ -187,58 +188,90 @@ const Mutation = objectType({
       },
     })
 
-    t.field('togglePublishPost', {
-      type: 'Post',
-      args: {
-        id: nonNull(intArg()),
-      },
-      resolve: async (_, args, context: Context) => {
-        try {
-          const post = await context.prisma.post.findUnique({
-            where: { id: args.id || undefined },
-            select: {
-              published: true,
-            },
-          })
-          return context.prisma.post.update({
-            where: { id: args.id || undefined },
-            data: { published: !post?.published },
-          })
-        } catch (e) {
-          throw new Error(
-            `Post with ID ${args.id} does not exist in the database.`,
-          )
-        }
-      },
-    })
+    // t.field('createDraft', {
+    //   type: 'Post',
+    //   args: {
+    //     data: nonNull(
+    //       arg({
+    //         type: 'PostCreateInput',
+    //       }),
+    //     ),
+    //   },
+    //   resolve: (_, args, context: Context) => {
+    //     const userId = getUserId(context)
+    //     return context.prisma.post.create({
+    //       data: {
+    //         title: args.data.title,
+    //         content: args.data.content,
+    //         authorId: userId,
+    //       },
+    //     })
+    //   },
+    // })
 
-    t.field('incrementPostViewCount', {
-      type: 'Post',
-      args: {
-        id: nonNull(intArg()),
-      },
-      resolve: (_, args, context: Context) => {
-        return context.prisma.post.update({
-          where: { id: args.id || undefined },
-          data: {
-            viewCount: {
-              increment: 1,
-            },
-          },
-        })
-      },
-    })
+    // t.field('togglePublishPost', {
+    //   type: 'Post',
+    //   args: {
+    //     id: nonNull(intArg()),
+    //   },
+    //   resolve: async (_, args, context: Context) => {
+    //     try {
+    //       const post = await context.prisma.post.findUnique({
+    //         where: { id: args.id || undefined },
+    //         select: {
+    //           published: true,
+    //         },
+    //       })
+    //       return context.prisma.post.update({
+    //         where: { id: args.id || undefined },
+    //         data: { published: !post?.published },
+    //       })
+    //     } catch (e) {
+    //       throw new Error(
+    //         `Post with ID ${args.id} does not exist in the database.`,
+    //       )
+    //     }
+    //   },
+    // })
 
-    t.field('deletePost', {
-      type: 'Post',
-      args: {
-        id: nonNull(intArg()),
-      },
-      resolve: (_, args, context: Context) => {
-        return context.prisma.post.delete({
-          where: { id: args.id },
-        })
-      },
+    // t.field('incrementPostViewCount', {
+    //   type: 'Post',
+    //   args: {
+    //     id: nonNull(intArg()),
+    //   },
+    //   resolve: (_, args, context: Context) => {
+    //     return context.prisma.post.update({
+    //       where: { id: args.id || undefined },
+    //       data: {
+    //         viewCount: {
+    //           increment: 1,
+    //         },
+    //       },
+    //     })
+    //   },
+    // })
+
+    // t.field('deletePost', {
+    //   type: 'Post',
+    //   args: {
+    //     id: nonNull(intArg()),
+    //   },
+    //   resolve: (_, args, context: Context) => {
+    //     return context.prisma.post.delete({
+    //       where: { id: args.id },
+    //     })
+    //   },
+    // })
+  },
+})
+
+const Tweet = objectType({
+  name: 'Tweet',
+  definition(t) {
+    t.int('id')
+    t.string('content')
+    t.field('author', {
+      type: User,
     })
   },
 })
@@ -250,7 +283,7 @@ const User = objectType({
     t.string('name')
     t.nonNull.string('email')
     t.nonNull.list.nonNull.field('posts', {
-      type: 'Post',
+      type: Post,
       resolve: (parent, _, context: Context) => {
         return context.prisma.user
           .findUnique({
@@ -258,6 +291,12 @@ const User = objectType({
           })
           .posts()
       },
+    })
+    t.list.field('tweet', {
+      type: Tweet,
+    })
+    t.field('profile', {
+      type: Profile,
     })
   },
 })
@@ -272,6 +311,30 @@ const Post = objectType({
     t.string('content')
     t.nonNull.boolean('published')
     t.nonNull.int('viewCount')
+    t.field('author', {
+      type: 'User',
+      resolve: (parent, _, context: Context) => {
+        return context.prisma.post
+          .findUnique({
+            where: { id: parent.id || undefined },
+          })
+          .author()
+      },
+    })
+  },
+})
+
+const Profile = objectType({
+  name: 'Profile',
+  definition(t) {
+    t.nonNull.int('id')
+    t.nonNull.string('bio')
+    t.string('content')
+    t.string('location')
+    t.string('website')
+    t.string('avatar')
+    // t.nonNull.boolean('published')
+    // t.nonNull.int('viewCount')
     t.field('author', {
       type: 'User',
       resolve: (parent, _, context: Context) => {
