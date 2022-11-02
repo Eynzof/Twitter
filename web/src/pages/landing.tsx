@@ -17,13 +17,18 @@ function Landing() {
             display: "flex",
             flexDirection: "column",
             height: "100%",
-            justifyContent: "space-evenly",
+            alignItems: "flex-start",
+            justifyContent: "space-between",
           }}>
-          <nav>
+          <nav style={{ height: "60px" }}>
             <img
               src={twitterlogo}
               alt="twitter.com"
-              style={{ height: "40px", padding: "top: 20px" }}
+              style={{
+                height: "40px",
+                paddingTop: "20px",
+                paddingLeft: "10px",
+              }}
             />
           </nav>
           <div id="heading1">
@@ -32,48 +37,61 @@ function Landing() {
           <h2 id="heading2">Join Twitter today.</h2>
           <section
             id="login-section"
-            style={{ width: "60%", display: "flex", flexDirection: "column" }}>
-            <a
-              className="signup-button"
-              href="/login-g"
-              style={{
-                display: "flex",
-                border: "0.5px solid rgb(212, 211, 211)",
-                borderRadius: "20px",
-                marginBottom: "8px",
-
-                padding: "8px",
-                justifyContent: "center",
-                color: "black",
-              }}>
-              <img
-                style={{ width: "18px", marginRight: "10px" }}
-                src="https://img.icons8.com/color/48/000000/google-logo.png"
-                alt="google logo"
-              />
-              Sign up with Google
-            </a>
-            <a
-              className="signup-button"
-              href="/login-a"
-              style={{
-                display: "flex",
-                border: "0.5px solid rgb(212, 211, 211)",
-                borderRadius: "20px",
-                padding: "8px",
-                justifyContent: "center",
-                color: "black",
-              }}>
-              <img
+            style={{
+              width: "70%",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              maxWidth: "300px",
+            }}>
+            <div style={{ width: "90%" }}>
+              <a
+                className="signup-button"
+                href="/login-g"
                 style={{
-                  width: "18px",
-                  marginRight: "10px",
-                }}
-                src={applelogo}
-                alt="apple logo"
-              />
-              Sign up with Apple
-            </a>
+                  display: "flex",
+                  border: "0.5px solid rgb(212, 211, 211)",
+                  borderRadius: "20px",
+                  marginBottom: "8px",
+
+                  padding: "8px",
+                  color: "black",
+                  justifyContent: "center",
+                  fontSize: "14px",
+                }}>
+                <img
+                  style={{ width: "18px", marginRight: "10px" }}
+                  src="https://img.icons8.com/color/48/000000/google-logo.png"
+                  alt="google logo"
+                />
+                Sign up with Google
+              </a>
+            </div>
+            <div style={{ width: "90%" }}>
+              <a
+                className="signup-button"
+                href="/login-a"
+                style={{
+                  display: "flex",
+                  border: "0.5px solid rgb(212, 211, 211)",
+                  borderRadius: "20px",
+                  padding: "8px",
+                  color: "black",
+
+                  justifyContent: "center",
+                  fontSize: "14px",
+                }}>
+                <img
+                  style={{
+                    width: "18px",
+                    marginRight: "10px",
+                  }}
+                  src={applelogo}
+                  alt="apple logo"
+                />
+                Sign up with Apple
+              </a>
+            </div>
             <div className="or" style={{ position: "relative" }}>
               <hr
                 className="hr1"
