@@ -4,7 +4,8 @@ import Users from "./components/user";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
 import IsAuthenticated from "./utils/isAuthenticated";
-import './app.css'
+import "./app.css";
+import Profile from "./pages/profile";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/landing" element={<Landing />} />
         <Route path="/" element={<IsAuthenticated />}>
           <Route path="/" element={<Users />} />
+          <Route path="/profile" element={<Profile />} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
