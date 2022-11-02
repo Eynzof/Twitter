@@ -304,16 +304,16 @@ const User = objectType({
     t.nonNull.int('id')
     t.string('name')
     t.nonNull.string('email')
-    t.nonNull.list.nonNull.field('posts', {
-      type: Post,
-      resolve: (parent, _, context: Context) => {
-        return context.prisma.user
-          .findUnique({
-            where: { id: parent.id || undefined },
-          })
-          .posts()
-      },
-    })
+    // t.nonNull.list.nonNull.field('posts', {
+    //   type: Post,
+    //   resolve: (parent, _, context: Context) => {
+    //     return context.prisma.user
+    //       .findUnique({
+    //         where: { id: parent.id || undefined },
+    //       })
+    //       .posts()
+    //   },
+    // })
     t.list.field('tweet', {
       type: Tweet,
     })
@@ -323,28 +323,28 @@ const User = objectType({
   },
 })
 
-const Post = objectType({
-  name: 'Post',
-  definition(t) {
-    t.nonNull.int('id')
-    t.nonNull.field('createdAt', { type: 'DateTime' })
-    t.nonNull.field('updatedAt', { type: 'DateTime' })
-    t.nonNull.string('title')
-    t.string('content')
-    t.nonNull.boolean('published')
-    t.nonNull.int('viewCount')
-    t.field('author', {
-      type: 'User',
-      resolve: (parent, _, context: Context) => {
-        return context.prisma.post
-          .findUnique({
-            where: { id: parent.id || undefined },
-          })
-          .author()
-      },
-    })
-  },
-})
+// const Post = objectType({
+//   name: 'Post',
+//   definition(t) {
+//     t.nonNull.int('id')
+//     t.nonNull.field('createdAt', { type: 'DateTime' })
+//     t.nonNull.field('updatedAt', { type: 'DateTime' })
+//     t.nonNull.string('title')
+//     t.string('content')
+//     t.nonNull.boolean('published')
+//     t.nonNull.int('viewCount')
+//     t.field('author', {
+//       type: 'User',
+//       resolve: (parent, _, context: Context) => {
+//         return context.prisma.post
+//           .findUnique({
+//             where: { id: parent.id || undefined },
+//           })
+//           .author()
+//       },
+//     })
+//   },
+// })
 
 const Profile = objectType({
   name: 'Profile',
@@ -419,14 +419,14 @@ const schemaWithoutPermissions = makeSchema({
   types: [
     Query,
     Mutation,
-    Post,
+    // Post,
     User,
     AuthPayload,
     UserUniqueInput,
     UserCreateInput,
-    PostCreateInput,
+    // PostCreateInput,
     SortOrder,
-    PostOrderByUpdatedAtInput,
+    // PostOrderByUpdatedAtInput,
     DateTime,
   ],
   outputs: {
