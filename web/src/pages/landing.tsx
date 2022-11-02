@@ -10,24 +10,17 @@ function Landing() {
       <div id="image-section">
         <div></div>
       </div>
-      <section id="content-section" style={{ display: "flex", height: "100%" }}>
+      <section id="content-section" className="d-flex h-100">
         <section
           id="content-section-wrapper"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            height: "100%",
-            alignItems: "flex-start",
-            justifyContent: "space-between",
-          }}>
+          className="d-flex h-100 flex-column align-items-start justify-content-between">
           <nav style={{ height: "60px" }}>
             <img
               src={twitterlogo}
               alt="twitter.com"
               style={{
-                height: "40px",
+                height: "60px",
                 paddingTop: "20px",
-                paddingLeft: "10px",
               }}
             />
           </nav>
@@ -46,21 +39,20 @@ function Landing() {
             }}>
             <div style={{ width: "90%" }}>
               <a
-                className="signup-button"
+                className="signup-button d-flex justify-content-center mb-2 p-2"
                 href="/login-g"
                 style={{
-                  display: "flex",
                   border: "0.5px solid rgb(212, 211, 211)",
                   borderRadius: "20px",
-                  marginBottom: "8px",
-
-                  padding: "8px",
                   color: "black",
-                  justifyContent: "center",
-                  fontSize: "14px",
+                  fontSize: "0.875rem",
                 }}>
                 <img
-                  style={{ width: "18px", marginRight: "10px" }}
+                  style={{
+                    width: "1.125rem",
+                    height: "1.125rem",
+                    marginRight: "10px",
+                  }}
                   src="https://img.icons8.com/color/48/000000/google-logo.png"
                   alt="google logo"
                 />
@@ -69,21 +61,18 @@ function Landing() {
             </div>
             <div style={{ width: "90%" }}>
               <a
-                className="signup-button"
+                className="signup-button d-flex justify-content-center mb-2 p-2"
                 href="/login-a"
                 style={{
-                  display: "flex",
-                  border: "0.5px solid rgb(212, 211, 211)",
                   borderRadius: "20px",
-                  padding: "8px",
+                  border: "0.5px solid rgb(212, 211, 211)",
                   color: "black",
-
-                  justifyContent: "center",
-                  fontSize: "14px",
+                  fontSize: "0.875rem",
                 }}>
                 <img
                   style={{
-                    width: "18px",
+                    width: "1.125rem",
+                    height: "1.125rem",
                     marginRight: "10px",
                   }}
                   src={applelogo}
