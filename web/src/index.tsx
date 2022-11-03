@@ -16,16 +16,20 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
-const authLink = setContext((request, previousContext) => {
-  const result = {
-    headers: { authorization: localStorage.getItem("token") },
-  };
-  return result;
-});
-
 const httpLink = new HttpLink({
   uri: "http://localhost:4000",
   credentials: "same-origin",
+});
+
+const authLink = setContext(async (req, { headers }) => {
+  const token = localStorage.getItem("token");
+
+  return {
+    ...headers,
+    headers: {
+      Authorization: token ? `Bearer ${token}` : null,
+    },
+  };
 });
 
 const link = authLink.concat(httpLink as any);
