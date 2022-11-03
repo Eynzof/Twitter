@@ -219,22 +219,22 @@ const UserUniqueInput = inputObjectType({
   },
 })
 
-const PostCreateInput = inputObjectType({
-  name: 'PostCreateInput',
-  definition(t) {
-    t.nonNull.string('title')
-    t.string('content')
-  },
-})
+// const PostCreateInput = inputObjectType({
+//   name: 'PostCreateInput',
+//   definition(t) {
+//     t.nonNull.string('title')
+//     t.string('content')
+//   },
+// })
 
-const UserCreateInput = inputObjectType({
-  name: 'UserCreateInput',
-  definition(t) {
-    t.nonNull.string('email')
-    t.string('name')
-    t.list.nonNull.field('posts', { type: 'PostCreateInput' })
-  },
-})
+// const UserCreateInput = inputObjectType({
+//   name: 'UserCreateInput',
+//   definition(t) {
+//     t.nonNull.string('email')
+//     t.string('name')
+//     t.list.nonNull.field('posts', { type: 'PostCreateInput' })
+//   },
+// })
 
 const AuthPayload = objectType({
   name: 'AuthPayload',
@@ -248,11 +248,10 @@ const schemaWithoutPermissions = makeSchema({
   types: [
     Query,
     Mutation,
-
     User,
     AuthPayload,
-    UserUniqueInput,
-    UserCreateInput,
+    // UserUniqueInput,
+    // UserCreateInput,
 
     SortOrder,
 
