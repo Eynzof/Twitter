@@ -1,4 +1,11 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+  Routes,
+} from "react-router-dom";
 import Landing from "./pages/landing";
 import Users from "./components/user";
 import Login from "./pages/login";
@@ -9,23 +16,25 @@ import Profile from "./pages/profile";
 import CreateProfile from "./components/CreateProfile";
 import NotFound from "./pages/notfound";
 
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <>
+      <Route path="*" element={<NotFound />} />
+      <Route path="/landing" element={<Landing />} />
+      <Route path="/" element={<IsAuthenticated />}>
+        <Route path="/" element={<Users />} />
+        <Route path="/users" element={<Users />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/create-profile" element={<CreateProfile />} />
+      </Route>
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
+    </>
+  )
+);
+
 function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="*" element={<NotFound />} />
-        <Route path="/landing" element={<Landing />} />
-        <Route path="/" element={<IsAuthenticated />}>
-          <Route path="/" element={<Users />} />
-          <Route path="/users" element={<Users />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/create-profile" element={<CreateProfile />} />
-        </Route>
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-      </Routes>
-    </BrowserRouter>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
