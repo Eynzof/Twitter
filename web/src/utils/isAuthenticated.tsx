@@ -17,5 +17,7 @@ export default function IsAuthenticated() {
   if (error) return <p>{error.message}</p>;
   console.log("data.me", data.me);
   console.log("isAuthed?", Boolean(data.me));
+
+  // 未登录时导航到/landing
   return data.me ? <Outlet /> : <Navigate to="/landing" />;
 }
