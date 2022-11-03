@@ -8,14 +8,16 @@ import Modal from "react-modal";
 
 import { customStyles } from "../styles/CustomModalStyles";
 
-const CREATE_PROFILE_MUTATION = gql`
+const UPDATE_PROFILE_MUTATION = gql`
   mutation createProfile(
+    $id: Int!
     $bio: String
     $location: String
     $website: String
     $avatar: String
   ) {
     createProfile(
+      id: $id
       bio: $bio
       location: $location
       website: $website
@@ -32,7 +34,7 @@ interface ProfileProps {
 }
 
 export default function CreateProfile() {
-  const [createProfile] = useMutation(CREATE_PROFILE_MUTATION, {
+  const [updateProfile] = useMutation(UPDATE_PROFILE_MUTATION, {
     refetchQueries: [{ query: ME_QUERY }],
   });
 
@@ -54,7 +56,7 @@ export default function CreateProfile() {
 
   return (
     <div>
-      <button onClick={openModal}>Create Profile</button>
+      <button onClick={openModal}>UPDATE Profile</button>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -65,7 +67,7 @@ export default function CreateProfile() {
           // validationSchema={validationSchema}
           onSubmit={async (values, { setSubmitting }) => {
             setSubmitting(true);
-            await createProfile({
+            await updateProfile({
               variables: values,
             });
 
@@ -79,7 +81,7 @@ export default function CreateProfile() {
             <Field name="website" type="website" placeholder="website" />
             <ErrorMessage name="website" component={"div"} />
             <button type="submit" className="login-button">
-              <span>Create Profile</span>
+              <span>Update Profile</span>
             </button>
           </Form>
         </Formik>
