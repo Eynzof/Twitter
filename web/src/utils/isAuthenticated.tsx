@@ -15,7 +15,7 @@ export default function IsAuthenticated() {
     return <p>Loading...</p>;
   }
   if (error) {
-    console.log("route failed, error message:", error.message);
+    console.log("route failed, maybe server is not running? error message:", error.message);
     return <Navigate to="/landing" />;
   }
   console.log("data.me", data.me);
