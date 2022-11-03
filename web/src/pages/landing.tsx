@@ -86,7 +86,7 @@ function Landing() {
               </div>
               <button
                 onClick={() => {
-                  navigate("/");
+                  navigate("/signup");
                 }}
                 className="button1 py-1"
                 style={{
