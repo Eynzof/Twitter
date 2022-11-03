@@ -67,6 +67,9 @@ export default function Signup() {
             const response = await signup({
               variables: values,
             });
+
+            // 注册后自动登录，token写入本地存储空间
+            // as-is: token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI5LCJpYXQiOjE2Njc0NTg5NTJ9.XuqxNRqcpukyBV6X7O3WpwyaOpOuhc1zMNHsI_4zvSA
             localStorage.setItem("token", response.data.signup.token);
             setSubmitting(false);
             navigate("/");
