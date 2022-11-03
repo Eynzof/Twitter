@@ -1,11 +1,9 @@
-import { gql, useMutation } from "@apollo/client";
-import { Formik, Field, ErrorMessage } from "formik";
-import React, { useState } from "react";
-import { Form } from "react-router-dom";
-import login from "../pages/login";
-import { ME_QUERY } from "../pages/profile";
+import { useMutation } from "@apollo/client";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import gql from "graphql-tag";
+import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
-
+import { ME_QUERY } from "../pages/profile";
 import { customStyles } from "../styles/CustomModalStyles";
 
 const CREATE_PROFILE_MUTATION = gql`
@@ -20,25 +18,26 @@ const CREATE_PROFILE_MUTATION = gql`
       location: $location
       website: $website
       avatar: $avatar
-    )
+    ) {
+      id
+    }
   }
 `;
 
-interface ProfileProps {
+interface ProfileValues {
   bio: string;
   location: string;
   website: string;
   avatar: string;
 }
 
-export default function CreateProfile() {
+function CreateProfile() {
   const [createProfile] = useMutation(CREATE_PROFILE_MUTATION, {
     refetchQueries: [{ query: ME_QUERY }],
   });
-
   const [modalIsOpen, setIsOpen] = useState(false);
 
-  const initialValues: ProfileProps = {
+  const initialValues: ProfileValues = {
     bio: "",
     location: "",
     website: "",
@@ -52,9 +51,15 @@ export default function CreateProfile() {
     setIsOpen(false);
   };
 
+  useEffect(() => {
+    Modal.setAppElement("body");
+  }, []);
+
   return (
     <div>
-      <button onClick={openModal}>Create Profile</button>
+      <button onClick={openModal} className="edit-button">
+        Create Profile
+      </button>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -70,14 +75,16 @@ export default function CreateProfile() {
             });
 
             setSubmitting(false);
+            setIsOpen(false);
           }}>
           <Form>
-            <Field name="bio" type="textArea" placeholder="Bio" />
+            <Field name="bio" type="text" as="textarea" placeholder="Bio" />
             <ErrorMessage name="bio" component={"div"} />
-            <Field name="location" type="password" placeholder="location" />
+            <Field name="location" type="location" placeholder="Location" />
             <ErrorMessage name="location" component={"div"} />
-            <Field name="website" type="website" placeholder="website" />
+            <Field name="website" type="website" placeholder="Website" />
             <ErrorMessage name="website" component={"div"} />
+
             <button type="submit" className="login-button">
               <span>Create Profile</span>
             </button>
@@ -87,3 +94,4 @@ export default function CreateProfile() {
     </div>
   );
 }
+export default CreateProfile;

@@ -1,7 +1,8 @@
 import { gql, useQuery } from "@apollo/client";
-import React from "react";
+import React, { useEffect } from "react";
 import CreateProfile from "../components/CreateProfile";
-
+import UpdateProfile from "../components/UpdateProfile";
+import Modal from "react-modal";
 export const ME_QUERY = gql`
   query me {
     me {
@@ -17,9 +18,26 @@ export const ME_QUERY = gql`
   }
 `;
 
+const ProfilePage = (profile: any) => {
+  return (
+    <div className="container">
+      <h1>Profile</h1>
+      {/* {data.me.Profile.id ? <UpdateProfile /> : <CreateProfile />} */}
+      <p>{profile.bio}</p>
+      <p>{profile.location}</p>
+      <p>{profile.website}</p>
+    </div>
+  );
+};
+
 export default function Profile() {
+  useEffect(() => {
+    Modal.setAppElement("body");
+  }, []);
   const { loading, error, data } = useQuery(ME_QUERY);
   if (loading) return <p>Loading</p>;
+
+  console.log("data", data);
 
   if (error)
     return (
@@ -29,12 +47,15 @@ export default function Profile() {
       </div>
     );
   return (
-    <div className="container">
-      <h1>Profile</h1>
-      <CreateProfile />
-      {/* <p>{data.me.Profile.bio}</p>
-      <p>{data.me.Profile.location}</p>
-      <p>{data.me.Profile.website}</p> */}
-    </div>
+    <>
+      {data.me.profile ? (
+        <ProfilePage {...data.me.profile} />
+      ) : (
+        <div style={{ display: "flex", margin: "10px" }}>
+          <p>You don't have profile currently</p>
+          <CreateProfile />
+        </div>
+      )}
+    </>
   );
 }

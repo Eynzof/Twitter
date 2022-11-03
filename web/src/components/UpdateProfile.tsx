@@ -1,10 +1,9 @@
-import { gql, useMutation } from "@apollo/client";
-import { Formik, Field, ErrorMessage } from "formik";
-import React, { useState } from "react";
-import { Form } from "react-router-dom";
-import login from "../pages/login";
-import { ME_QUERY } from "../pages/profile";
+import { gql, useMutation, useQuery } from "@apollo/client";
+import { ErrorMessage, Field, Formik } from "formik";
+import { useState } from "react";
 import Modal from "react-modal";
+import { Form } from "react-router-dom";
+import { ME_QUERY } from "../pages/profile";
 
 import { customStyles } from "../styles/CustomModalStyles";
 
@@ -27,24 +26,30 @@ const UPDATE_PROFILE_MUTATION = gql`
 `;
 
 interface ProfileProps {
+  id: string;
   bio: string;
   location: string;
   website: string;
   avatar: string;
 }
 
-export default function CreateProfile() {
+export default function UpdateProfile() {
+  const { loading, error, data } = useQuery(ME_QUERY);
   const [updateProfile] = useMutation(UPDATE_PROFILE_MUTATION, {
     refetchQueries: [{ query: ME_QUERY }],
   });
 
   const [modalIsOpen, setIsOpen] = useState(false);
 
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error.message}</p>;
+
   const initialValues: ProfileProps = {
-    bio: "",
-    location: "",
-    website: "",
-    avatar: "",
+    id: data.me.Profile.id,
+    bio: data.me.Profile.bio,
+    location: data.me.Profile.location,
+    website: data.me.Profile.website,
+    avatar: data.me.Profile.avatar,
   };
 
   const openModal = () => {
@@ -54,9 +59,9 @@ export default function CreateProfile() {
     setIsOpen(false);
   };
 
-  return (
+  return ( 
     <div>
-      <button onClick={openModal}>UPDATE Profile</button>
+      <button onClick={openModal}>Update Profile</button>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
