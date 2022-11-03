@@ -13,7 +13,7 @@ model User {
   email    String   @unique
   // posts    Post[]
   password String
-  profile  Profile?
+  profile  Profile? 
   tweet    Tweet[]
 }
 
