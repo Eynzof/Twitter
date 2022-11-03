@@ -14,7 +14,10 @@ export default function IsAuthenticated() {
   if (loading) {
     return <p>Loading...</p>;
   }
-  if (error) return <p>{error.message}</p>;
+  if (error) {
+    console.log("route failed, error message:", error.message);
+    return <Navigate to="/landing" />;
+  }
   console.log("data.me", data.me);
   console.log("isAuthed?", Boolean(data.me));
 
