@@ -275,4 +275,5 @@ const schemaWithoutPermissions = makeSchema({
   },
 })
 
-export const schema = applyMiddleware(schemaWithoutPermissions, permissions)
+export const schema = applyMiddleware(schemaWithoutPermissions)
+//export const schema = applyMiddleware(schemaWithoutPermissions, permissions)
