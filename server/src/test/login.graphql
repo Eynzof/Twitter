@@ -1,0 +1,9 @@
+mutation Login {
+  login(email: "alice@prisma.io", password: "myPassword42") {
+    token
+    user {
+      id
+      name
+    }
+  }
+}

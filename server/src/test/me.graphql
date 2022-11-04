@@ -1,0 +1,11 @@
+# after login, you will receive a token
+# add it to the HTTP Headers as
+# {
+#   "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY2NzUyNzgyMn0.5xSBnZQbo6eA8hLdYtp7Mh0R8R3LZDgBUYtGhYBCGNM"
+# }
+
+query Me {
+  me {
+    id
+  }
+}

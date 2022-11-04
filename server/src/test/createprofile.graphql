@@ -1,0 +1,7 @@
+mutation CreateProfile {
+  createProfile(bio: "1", website: "2", location: "3", avatar: "4") {
+    user {
+      id
+    }
+  }
+}

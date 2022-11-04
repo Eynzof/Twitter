@@ -1,5 +1,5 @@
 mutation signup {
-  signup(name: "enzo", email: "enzo@enzo.com", password: "1234") {
+  signup(name: "1", email: "1@1.com", password: "1") {
     token
     user {
       id
