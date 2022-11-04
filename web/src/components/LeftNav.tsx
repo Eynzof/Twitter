@@ -5,6 +5,16 @@ import "../styles/leftNav.css";
 // import Logout from "./Logout"
 // import Tweet from "./Tweet"
 
+import { Box, Button, VStack } from "@chakra-ui/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHome,
+  faUser,
+  faEnvelope,
+  faBell,
+  faEllipsis,
+} from "@fortawesome/free-solid-svg-icons";
+
 function LeftNav() {
   return (
     <header style={{ width: "236px", float: "right" }}>
@@ -16,38 +26,57 @@ function LeftNav() {
             </div>
           </Link>
         </div>
-        <div>
+        <VStack align="stretch">
           <Link to="/">
-            <h2>
-              <i className="fa fa-home" aria-hidden="true" />{" "}
-              <span className="title">Home</span>
-            </h2>
+            <Button
+              size="lg"
+              colorScheme="black"
+              variant="ghost"
+              leftIcon={<FontAwesomeIcon fixedWidth size="lg" icon={faHome} />}>
+              Home
+            </Button>
           </Link>
           <Link to="/profile">
-            <h2>
-              <i className="fa fa-user" aria-hidden="true" />{" "}
-              <span className="title">Profile</span>
-            </h2>
+            <Button
+              size="lg"
+              colorScheme="black"
+              variant="ghost"
+              leftIcon={<FontAwesomeIcon fixedWidth size="lg" icon={faUser} />}>
+              User
+            </Button>
           </Link>
           <Link to="/users">
-            <h2>
-              <i className="fa fa-envelope" aria-hidden="true" />{" "}
-              <span className="title">Messages</span>
-            </h2>
+            <Button
+              size="lg"
+              colorScheme="black"
+              variant="ghost"
+              leftIcon={
+                <FontAwesomeIcon fixedWidth size="lg" icon={faEnvelope} />
+              }>
+              Messages
+            </Button>
           </Link>
           <Link to="/users">
-            <h2>
-              <i className="fa fa-bell" aria-hidden="true" />{" "}
-              <span className="title">Notify</span>
-            </h2>
+            <Button
+              size="lg"
+              colorScheme="black"
+              variant="ghost"
+              leftIcon={<FontAwesomeIcon fixedWidth size="lg" icon={faBell} />}>
+              Notify
+            </Button>
           </Link>
           <Link to="/users">
-            <h2>
-              <i className="fa fa-ellipsis-h" aria-hidden="true" />{" "}
-              <span className="title">More</span>
-            </h2>
+            <Button
+              size="lg"
+              colorScheme="black"
+              variant="ghost"
+              leftIcon={
+                <FontAwesomeIcon fixedWidth size="lg" icon={faEllipsis} />
+              }>
+              More
+            </Button>
           </Link>
-        </div>
+        </VStack>
       </div>
       {/* <Tweet /> */}
       {/* <Logout /> */}
