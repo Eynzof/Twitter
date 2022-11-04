@@ -1,8 +1,7 @@
 import { gql, useMutation, useQuery } from "@apollo/client";
-import { ErrorMessage, Field, Formik } from "formik";
+import { ErrorMessage, Field, Formik, Form } from "formik";
 import { useEffect, useState } from "react";
 import Modal from "react-modal";
-import { Form } from "react-router-dom";
 import { ME_QUERY } from "../pages/Profile";
 
 import { customStyles } from "../styles/CustomModalStyles";
@@ -26,7 +25,6 @@ const UPDATE_PROFILE_MUTATION = gql`
 `;
 
 interface ProfileProps {
-  id: string;
   bio: string;
   location: string;
   website: string;
@@ -49,7 +47,6 @@ export default function UpdateProfile() {
   if (error) return <p>{error.message}</p>;
 
   const initialValues: ProfileProps = {
-    id: data.me.profile.id,
     bio: data.me.profile.bio,
     location: data.me.profile.location,
     website: data.me.profile.website,
@@ -73,8 +70,8 @@ export default function UpdateProfile() {
         style={customStyles}>
         <Formik
           initialValues={initialValues}
-          // validationSchema={validationSchema}
           onSubmit={async (values, { setSubmitting }) => {
+            console.log("Formik submitted");
             setSubmitting(true);
             await updateProfile({
               variables: values,
@@ -86,11 +83,16 @@ export default function UpdateProfile() {
           <Form>
             <Field name="bio" type="textArea" placeholder="Bio" />
             <ErrorMessage name="bio" component={"div"} />
-            <Field name="location" type="password" placeholder="location" />
+            <Field name="location" type="text" placeholder="location" />
             <ErrorMessage name="location" component={"div"} />
             <Field name="website" type="website" placeholder="website" />
             <ErrorMessage name="website" component={"div"} />
-            <button type="submit" className="login-button">
+            <button
+              type="submit"
+              className="login-button"
+              onClick={() => {
+                console.log("clicked");
+              }}>
               <span>Update Profile</span>
             </button>
           </Form>
