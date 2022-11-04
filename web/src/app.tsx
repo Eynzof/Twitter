@@ -15,6 +15,7 @@ import "./app.css";
 import Profile from "./pages/Profile";
 import CreateProfile from "./components/CreateProfile";
 import NotFound from "./pages/Notfound";
+import { ChakraProvider } from "@chakra-ui/react";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -34,7 +35,11 @@ const router = createBrowserRouter(
 );
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <ChakraProvider>
+      <RouterProvider router={router} />
+    </ChakraProvider>
+  );
 }
 
 export default App;

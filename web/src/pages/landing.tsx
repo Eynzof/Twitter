@@ -7,8 +7,8 @@ function Landing() {
   const navigate = useNavigate();
   return (
     <>
-      <main>
-        <div id="image-section">
+      <main className="d-flex">
+        <div id="image-section" style={{ height: "100%" }}>
           <div></div>
         </div>
         <section id="content-section" className="d-flex h-100">
