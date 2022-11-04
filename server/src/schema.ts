@@ -114,7 +114,6 @@ const Mutation = objectType({
       resolve: (_, args, context: Context) => {
         const userId = getUserId(context)
         if (!userId) throw new Error('Cound not authenticate user.')
-
         return context.prisma.profile.create({
           data: {
             ...args,
@@ -135,7 +134,6 @@ const Mutation = objectType({
       resolve: (_, { id, ...args }, context: Context) => {
         const userId = getUserId(context)
         if (!userId) throw new Error('Cound not authenticate user.')
-
         return context.prisma.profile.update({
           data: {
             ...args,
@@ -170,8 +168,17 @@ const User = objectType({
     t.list.field('tweet', {
       type: Tweet,
     })
+
+    // Important
     t.field('profile', {
       type: Profile,
+      resolve: (parent, _, context) => {
+        return context.prisma.profile.findUnique({
+          where: {
+            userId: parent.id,
+          },
+        })
+      },
     })
   },
 })
@@ -186,14 +193,15 @@ const Profile = objectType({
     t.string('website')
     t.string('avatar')
 
+    // Important
     t.field('author', {
       type: 'User',
       resolve: (parent, _, context: Context) => {
-        return context.prisma.post
+        return context.prisma.profile
           .findUnique({
-            where: { id: parent.id || undefined },
+            where: { userId: parent.id || undefined },
           })
-          .author()
+          .User()
       },
     })
   },
@@ -249,6 +257,7 @@ const schemaWithoutPermissions = makeSchema({
     Query,
     Mutation,
     User,
+    Profile,
     AuthPayload,
     // UserUniqueInput,
     // UserCreateInput,
