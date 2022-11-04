@@ -6,15 +6,15 @@ import {
   RouterProvider,
   Routes,
 } from "react-router-dom";
-import Landing from "./pages/landing";
-import Users from "./components/user";
-import Login from "./pages/login";
-import Signup from "./pages/signup";
+import Landing from "./pages/Landing";
+import Users from "./components/User";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import IsAuthenticated from "./utils/isAuthenticated";
 import "./app.css";
-import Profile from "./pages/profile";
+import Profile from "./pages/Profile";
 import CreateProfile from "./components/CreateProfile";
-import NotFound from "./pages/notfound";
+import NotFound from "./pages/Notfound";
 
 const router = createBrowserRouter(
   createRoutesFromElements(

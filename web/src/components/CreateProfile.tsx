@@ -3,7 +3,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import gql from "graphql-tag";
 import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
-import { ME_QUERY } from "../pages/profile";
+import { ME_QUERY } from "../pages/Profile";
 import { customStyles } from "../styles/CustomModalStyles";
 
 const CREATE_PROFILE_MUTATION = gql`

@@ -4,7 +4,7 @@ import CreateProfile from "../components/CreateProfile";
 import UpdateProfile from "../components/UpdateProfile";
 import Modal from "react-modal";
 export const ME_QUERY = gql`
-  query me {
+  query MeProfile {
     me {
       id
       profile {

@@ -3,7 +3,7 @@ import { ErrorMessage, Field, Formik } from "formik";
 import { useState } from "react";
 import Modal from "react-modal";
 import { Form } from "react-router-dom";
-import { ME_QUERY } from "../pages/profile";
+import { ME_QUERY } from "../pages/Profile";
 
 import { customStyles } from "../styles/CustomModalStyles";
 
