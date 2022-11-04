@@ -21,8 +21,14 @@ function LeftNav() {
       <div className="d-flex flex-column ">
         <div>
           <Link to="/users">
-            <div style={{ height: "50px", width: "50px", padding: "13px" }}>
-              <img src={favicon} alt="logo" style={{ width: "24px" }} />
+            <div
+              style={{
+                height: "50px",
+                width: "50px",
+                padding: "11px",
+                marginLeft: "14px",
+              }}>
+              <img src={favicon} alt="logo" style={{ width: "28px" }} />
             </div>
           </Link>
         </div>
@@ -33,7 +39,7 @@ function LeftNav() {
               colorScheme="black"
               variant="ghost"
               leftIcon={<FontAwesomeIcon fixedWidth size="lg" icon={faHome} />}>
-              Home
+              <span style={{ marginLeft: "12px", fontSize: "20px" }}>Home</span>
             </Button>
           </Link>
           <Link to="/profile">
@@ -42,7 +48,7 @@ function LeftNav() {
               colorScheme="black"
               variant="ghost"
               leftIcon={<FontAwesomeIcon fixedWidth size="lg" icon={faUser} />}>
-              User
+              <span style={{ marginLeft: "12px", fontSize: "20px" }}>User</span>
             </Button>
           </Link>
           <Link to="/users">
@@ -53,7 +59,9 @@ function LeftNav() {
               leftIcon={
                 <FontAwesomeIcon fixedWidth size="lg" icon={faEnvelope} />
               }>
-              Messages
+              <span style={{ marginLeft: "12px", fontSize: "20px" }}>
+                Message
+              </span>
             </Button>
           </Link>
           <Link to="/users">
@@ -62,7 +70,9 @@ function LeftNav() {
               colorScheme="black"
               variant="ghost"
               leftIcon={<FontAwesomeIcon fixedWidth size="lg" icon={faBell} />}>
-              Notify
+              <span style={{ marginLeft: "12px", fontSize: "20px" }}>
+                Notify
+              </span>
             </Button>
           </Link>
           <Link to="/users">
@@ -73,7 +83,7 @@ function LeftNav() {
               leftIcon={
                 <FontAwesomeIcon fixedWidth size="lg" icon={faEllipsis} />
               }>
-              More
+              <span style={{ marginLeft: "12px", fontSize: "20px" }}>More</span>
             </Button>
           </Link>
         </VStack>
