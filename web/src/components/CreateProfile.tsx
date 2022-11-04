@@ -31,7 +31,11 @@ interface ProfileValues {
   avatar: string;
 }
 
-function CreateProfile() {
+export default function CreateProfile() {
+  useEffect(() => {
+    Modal.setAppElement("body");
+  }, []);
+
   const [createProfile] = useMutation(CREATE_PROFILE_MUTATION, {
     refetchQueries: [{ query: ME_QUERY }],
   });
@@ -50,10 +54,6 @@ function CreateProfile() {
   const closeModal = () => {
     setIsOpen(false);
   };
-
-  useEffect(() => {
-    Modal.setAppElement("body");
-  }, []);
 
   return (
     <div>
@@ -94,4 +94,3 @@ function CreateProfile() {
     </div>
   );
 }
-export default CreateProfile;

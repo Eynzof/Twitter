@@ -18,8 +18,8 @@ export default function IsAuthenticated() {
     console.log("route failed, maybe server is not running? error message:", error.message);
     return <Navigate to="/landing" />;
   }
-  console.log("data.me", data.me);
-  console.log("isAuthed?", Boolean(data.me));
+  // console.log("data.me", data.me);
+  // console.log("isAuthed?", Boolean(data.me));
 
   // 未登录时导航到/landing
   return data.me ? <Outlet /> : <Navigate to="/landing" />;

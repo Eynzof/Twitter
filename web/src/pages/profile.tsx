@@ -18,18 +18,6 @@ export const ME_QUERY = gql`
   }
 `;
 
-const ProfilePage = (profile: any) => {
-  return (
-    <div className="container">
-      <h1>Profile</h1>
-      {/* {data.me.Profile.id ? <UpdateProfile /> : <CreateProfile />} */}
-      <p>{profile.bio}</p>
-      <p>{profile.location}</p>
-      <p>{profile.website}</p>
-    </div>
-  );
-};
-
 export default function Profile() {
   useEffect(() => {
     Modal.setAppElement("body");
@@ -37,7 +25,7 @@ export default function Profile() {
   const { loading, error, data } = useQuery(ME_QUERY);
   if (loading) return <p>Loading</p>;
 
-  console.log("data", data);
+  // console.log("data", data);
 
   if (error)
     return (
@@ -48,14 +36,19 @@ export default function Profile() {
     );
   return (
     <>
-      {data.me.profile ? (
-        <ProfilePage {...data.me.profile} />
-      ) : (
-        <div style={{ display: "flex", margin: "10px" }}>
-          <p>You don't have profile currently</p>
+      <div className="container">
+        <h1>Profile</h1>
+        {data.me.profile ? (
+          <div>
+            <UpdateProfile />
+            <p>{data.me.profile.bio}</p>
+            <p>{data.me.profile.location}</p>
+            <p>{data.me.profile.website}</p>{" "}
+          </div>
+        ) : (
           <CreateProfile />
-        </div>
-      )}
+        )}
+      </div>
     </>
   );
 }

@@ -1,6 +1,6 @@
 import { gql, useMutation, useQuery } from "@apollo/client";
 import { ErrorMessage, Field, Formik } from "formik";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "react-modal";
 import { Form } from "react-router-dom";
 import { ME_QUERY } from "../pages/Profile";
@@ -34,6 +34,10 @@ interface ProfileProps {
 }
 
 export default function UpdateProfile() {
+  useEffect(() => {
+    Modal.setAppElement("body");
+  }, []);
+
   const { loading, error, data } = useQuery(ME_QUERY);
   const [updateProfile] = useMutation(UPDATE_PROFILE_MUTATION, {
     refetchQueries: [{ query: ME_QUERY }],
@@ -45,11 +49,11 @@ export default function UpdateProfile() {
   if (error) return <p>{error.message}</p>;
 
   const initialValues: ProfileProps = {
-    id: data.me.Profile.id,
-    bio: data.me.Profile.bio,
-    location: data.me.Profile.location,
-    website: data.me.Profile.website,
-    avatar: data.me.Profile.avatar,
+    id: data.me.profile.id,
+    bio: data.me.profile.bio,
+    location: data.me.profile.location,
+    website: data.me.profile.website,
+    avatar: data.me.profile.avatar,
   };
 
   const openModal = () => {
@@ -59,7 +63,7 @@ export default function UpdateProfile() {
     setIsOpen(false);
   };
 
-  return ( 
+  return (
     <div>
       <button onClick={openModal}>Update Profile</button>
       <Modal
@@ -77,6 +81,7 @@ export default function UpdateProfile() {
             });
 
             setSubmitting(false);
+            setIsOpen(false);
           }}>
           <Form>
             <Field name="bio" type="textArea" placeholder="Bio" />
