@@ -122,6 +122,9 @@ const Mutation = objectType({
         })
       },
     })
+
+
+    // Update Profile
     t.field('updateProfile', {
       type: 'Profile',
       args: {

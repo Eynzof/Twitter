@@ -7,24 +7,31 @@ import { ME_QUERY } from "../pages/Profile";
 import { customStyles } from "../styles/CustomModalStyles";
 
 const UPDATE_PROFILE_MUTATION = gql`
-  mutation createProfile(
+  mutation updateProfile(
     $id: Int!
     $bio: String
     $location: String
     $website: String
     $avatar: String
   ) {
-    createProfile(
+    updateProfile(
       id: $id
       bio: $bio
       location: $location
       website: $website
       avatar: $avatar
-    )
+    ) {
+      id
+      bio
+      location
+      website
+      avatar
+    }
   }
 `;
 
 interface ProfileProps {
+  id: number;
   bio: string;
   location: string;
   website: string;
@@ -47,6 +54,7 @@ export default function UpdateProfile() {
   if (error) return <p>{error.message}</p>;
 
   const initialValues: ProfileProps = {
+    id: data.me.profile.id,
     bio: data.me.profile.bio,
     location: data.me.profile.location,
     website: data.me.profile.website,
