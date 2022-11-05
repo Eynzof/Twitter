@@ -13,6 +13,7 @@ export const ME_QUERY = gql`
   query MeProfile {
     me {
       id
+      name
       profile {
         id
         bio
@@ -34,7 +35,7 @@ export default function Profile() {
   const { loading, error, data } = useQuery(ME_QUERY);
   if (loading) return <p>Loading</p>;
 
-  // console.log("data", data);
+  console.log("data", data);
 
   if (error)
     return (
@@ -60,9 +61,9 @@ export default function Profile() {
               </span>
             </div>
             <div className="avatar">
-              {data.me.Profile?.avatar ? (
+              {data.me.profile?.avatar ? (
                 <img
-                  src={data.me.Profile.avatar}
+                  src={data.me.profile.avatar}
                   style={{ width: "150px", borderRadius: "50%" }}
                   alt="avatar"
                 />
@@ -71,18 +72,18 @@ export default function Profile() {
               )}
             </div>
             <div className="make-profile">
-              {data.me.Profile ? <UpdateProfile /> : <CreateProfile />}
+              {data.me.profile ? <UpdateProfile /> : <CreateProfile />}
             </div>
 
             <h3 className="name">{data.me.name}</h3>
 
-            {data.me.Profile ? (
+            {data.me.profile ? (
               <p>
                 <i className="fas fa-link"> </i>{" "}
                 <Link
-                  to={{ pathname: `http://${data.me.Profile.website}` }}
+                  to={{ pathname: `http://${data.me.profile.website}` }}
                   target="_blank">
-                  {data.me.Profile.website}
+                  {data.me.profile.website}
                 </Link>
               </p>
             ) : null}
