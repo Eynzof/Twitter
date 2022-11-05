@@ -69,9 +69,15 @@ function LeftNav() {
             </Link>
           ))}
         </ButtonGroup>
+        <Button
+          width={"50%"}
+          marginTop={5}
+          borderRadius={20}
+          colorScheme={"twitter"}>
+          Tweet
+        </Button>
+        {/* <Logout /> */}
       </div>
-      {/* <Tweet /> */}
-      {/* <Logout /> */}
     </header>
   );
 }
