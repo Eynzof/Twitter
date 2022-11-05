@@ -1,11 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import favicon from "../styles/assets/twitterlogo.png";
 import "../styles/leftNav.css";
 // import Logout from "./Logout"
 // import Tweet from "./Tweet"
 
-import { Box, Button, VStack } from "@chakra-ui/react";
+import { Box, Button, ButtonGroup, VStack } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
@@ -13,9 +13,24 @@ import {
   faEnvelope,
   faBell,
   faEllipsis,
+  IconDefinition,
 } from "@fortawesome/free-solid-svg-icons";
 
+interface buttons {
+  text: string;
+  icon: IconDefinition;
+  path: string;
+}
+
 function LeftNav() {
+  const buttons: buttons[] = [
+    { text: "Home", icon: faHome, path: "/" },
+    { text: "User", icon: faUser, path: "/users" },
+    { text: "Message", icon: faEnvelope, path: "/" },
+    { text: "Notify", icon: faBell, path: "/" },
+    { text: "More", icon: faEllipsis, path: "/" },
+  ];
+
   return (
     <header style={{ width: "236px", float: "right" }}>
       <div className="d-flex flex-column ">
@@ -32,61 +47,28 @@ function LeftNav() {
             </div>
           </Link>
         </div>
-        <VStack align="stretch">
-          <Link to="/">
-            <Button
-              size="lg"
-              colorScheme="black"
-              variant="ghost"
-              leftIcon={<FontAwesomeIcon fixedWidth size="lg" icon={faHome} />}>
-              <span style={{ marginLeft: "12px", fontSize: "20px" }}>Home</span>
-            </Button>
-          </Link>
-          <Link to="/profile">
-            <Button
-              size="lg"
-              colorScheme="black"
-              variant="ghost"
-              leftIcon={<FontAwesomeIcon fixedWidth size="lg" icon={faUser} />}>
-              <span style={{ marginLeft: "12px", fontSize: "20px" }}>User</span>
-            </Button>
-          </Link>
-          <Link to="/users">
-            <Button
-              size="lg"
-              colorScheme="black"
-              variant="ghost"
-              leftIcon={
-                <FontAwesomeIcon fixedWidth size="lg" icon={faEnvelope} />
-              }>
-              <span style={{ marginLeft: "12px", fontSize: "20px" }}>
-                Message
-              </span>
-            </Button>
-          </Link>
-          <Link to="/users">
-            <Button
-              size="lg"
-              colorScheme="black"
-              variant="ghost"
-              leftIcon={<FontAwesomeIcon fixedWidth size="lg" icon={faBell} />}>
-              <span style={{ marginLeft: "12px", fontSize: "20px" }}>
-                Notify
-              </span>
-            </Button>
-          </Link>
-          <Link to="/users">
-            <Button
-              size="lg"
-              colorScheme="black"
-              variant="ghost"
-              leftIcon={
-                <FontAwesomeIcon fixedWidth size="lg" icon={faEllipsis} />
-              }>
-              <span style={{ marginLeft: "12px", fontSize: "20px" }}>More</span>
-            </Button>
-          </Link>
-        </VStack>
+
+        <ButtonGroup
+          className="d-flex flex-column"
+          size="lg"
+          colorScheme="black"
+          variant="ghost">
+          {buttons.map(({ text, icon, path }) => (
+            <Link to={path} style={{ marginLeft: "0" }}>
+              <Button
+                leftIcon={<FontAwesomeIcon fixedWidth size="lg" icon={icon} />}>
+                <span
+                  style={{
+                    marginLeft: "12px",
+                    fontSize: "20px",
+                    fontWeight: "normal",
+                  }}>
+                  {text}
+                </span>
+              </Button>
+            </Link>
+          ))}
+        </ButtonGroup>
       </div>
       {/* <Tweet /> */}
       {/* <Logout /> */}
