@@ -5,7 +5,7 @@ import "../styles/leftNav.css";
 // import Logout from "./Logout"
 // import Tweet from "./Tweet"
 
-import { Box, Button, ButtonGroup, VStack } from "@chakra-ui/react";
+import { Box, Button, ButtonGroup, Flex, VStack } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
@@ -69,13 +69,15 @@ function LeftNav() {
             </Link>
           ))}
         </ButtonGroup>
-        <Button
-          width={"50%"}
-          marginTop={5}
-          borderRadius={20}
-          colorScheme={"twitter"}>
-          Tweet
-        </Button>
+        <Flex justifyContent={"center"}>
+          <Button
+            width={"80%"}
+            marginTop={5}
+            borderRadius={20}
+            colorScheme={"twitter"}>
+            Tweet
+          </Button>
+        </Flex>
         {/* <Logout /> */}
       </div>
     </header>
