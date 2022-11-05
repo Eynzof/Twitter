@@ -1,5 +1,4 @@
 import { useMutation } from "@apollo/client";
-import { Button } from "@chakra-ui/react";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import gql from "graphql-tag";
 import React, { useEffect, useState } from "react";
@@ -85,13 +84,10 @@ export default function CreateProfile() {
             <ErrorMessage name="location" component={"div"} />
             <Field name="website" type="website" placeholder="Website" />
             <ErrorMessage name="website" component={"div"} />
-            <Button
-              colorScheme="twitter"
-              borderRadius={20}
-              variant="outline"
-              type="submit">
-              Create Profile
-            </Button>
+
+            <button type="submit" className="login-button">
+              <span>Create Profile</span>
+            </button>
           </Form>
         </Formik>
       </Modal>
