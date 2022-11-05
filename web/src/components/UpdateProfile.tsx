@@ -1,4 +1,5 @@
 import { gql, useMutation, useQuery } from "@apollo/client";
+import { Button } from "@chakra-ui/react";
 import { ErrorMessage, Field, Formik, Form } from "formik";
 import { useEffect, useState } from "react";
 import Modal from "react-modal";
@@ -70,7 +71,9 @@ export default function UpdateProfile() {
 
   return (
     <div>
-      <button onClick={openModal}>Update Profile</button>
+      <Button colorScheme={"twitter"} borderRadius={20} onClick={openModal}>
+        Update Profile
+      </Button>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -95,14 +98,13 @@ export default function UpdateProfile() {
             <ErrorMessage name="location" component={"div"} />
             <Field name="website" type="website" placeholder="website" />
             <ErrorMessage name="website" component={"div"} />
-            <button
+            <Button
               type="submit"
-              className="login-button"
-              onClick={() => {
-                console.log("clicked");
-              }}>
-              <span>Update Profile</span>
-            </button>
+              colorScheme={"twitter"}
+              borderRadius={20}
+              onClick={openModal}>
+              Update Profile
+            </Button>
           </Form>
         </Formik>
       </Modal>
