@@ -54,7 +54,7 @@ function LeftNav() {
           colorScheme="black"
           variant="ghost">
           {buttons.map(({ text, icon, path }) => (
-            <Link to={path} style={{ marginLeft: "0" }}>
+            <Link key={text} to={path} style={{ marginLeft: "0" }}>
               <Button
                 leftIcon={<FontAwesomeIcon fixedWidth size="lg" icon={icon} />}>
                 <span
